@@ -26,15 +26,17 @@ updateCountdown();
 window.setInterval(updateCountdown, 1000);
 
 const photos = [
+
   {src:"assets/foto-01.jpeg", text:"Um daqueles momentos que eu guardaria de novo, mil vezes."},
-  {src:"assets/foto-02.jpeg", text:"Você tem esse jeitinho único de deixar tudo mais especial."},
-  {src:"assets/foto-03.jpeg", text:"Cada versão sua tem um lugar guardado com carinho em mim."},
-  {src:"assets/foto-04.jpeg", text:"Seu sorriso é uma das minhas coisas favoritas."},
-  {src:"assets/foto-05.jpeg", text:"Até nossas brincadeiras viram lembranças que eu amo."},
-  {src:"assets/foto-06.jpeg", text:"Eu adoro ver você sendo exatamente quem você é."},
-  {src:"assets/foto-07.jpeg", text:"Um registro simples, mas cheio de significado pra mim."},
-  {src:"assets/foto-08.jpeg", text:"Que a gente nunca perca a vontade de colecionar momentos."},
-  {src:"assets/foto-09.jpeg", text:"No fim, meu carinho por você continua sendo casa."}
+  {src:"assets/foto-02.jpeg", text:"Você consegue deixar até os momentos mais simples especiais."},
+  {src:"assets/foto-03.jpeg", text:"Cada detalhe seu faz eu me apaixonar ainda mais por você."},
+  {src:"assets/foto-04.jpeg", text:"Seu sorriso é uma das coisas que eu nunca me canso de admirar."},
+  {src:"assets/foto-05.jpeg", text:"Com você, até nossas brincadeiras mais bobas viram boas lembranças."},
+  {src:"assets/foto-06.jpeg", text:"Eu amo seu jeitinho, suas manias e tudo aquilo que faz você ser você."},
+  {src:"assets/foto-07.jpeg", text:"Mais uma lembrança que tenho muita sorte de poder guardar."},
+  {src:"assets/foto-08.jpeg", text:"Que a gente ainda tenha milhares de momentos assim para viver juntos."},
+  {src:"assets/foto-09.jpeg", text:"Não importa quantas vezes a gente discorde, eu sempre vou querer você ao meu lado."}
+];
 ];
 let index = 0;
 const image = document.getElementById("slide-image");
