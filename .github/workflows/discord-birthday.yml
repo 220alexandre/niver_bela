@@ -5,6 +5,12 @@ on:
     # 00:00 de 25/11 no horário de Brasília (UTC-3) = 03:00 UTC.
     - cron: "0 3 25 11 *"
   workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Enviar uma mensagem de TESTE agora (sem esperar pelo aniversário)"
+        required: true
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -13,23 +19,27 @@ jobs:
   send-birthday-link:
     runs-on: ubuntu-latest
     steps:
-      - name: Verificar data e enviar o link
+      - name: Preparar e enviar mensagem
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          TEST_MODE: ${{ inputs.test_mode }}
         run: |
           set -euo pipefail
 
-          # O agendamento é anual, mas esta surpresa deve ser enviada apenas em 2026.
-          TODAY_BR=$(TZ=America/Sao_Paulo date +%F)
-          if [ "$TODAY_BR" != "2026-11-25" ]; then
-            echo "Hoje não é a data programada para esta surpresa. Nada será enviado."
-            exit 0
+          if [ -z "${DISCORD_WEBHOOK_URL:-}" ]; then
+            echo "Configure o secret DISCORD_WEBHOOK_URL em Settings > Secrets and variables > Actions."
+            exit 1
           fi
 
-          if [ -z "${DISCORD_WEBHOOK_URL:-}" ]; then
-            echo "Configure o secret DISCORD_WEBHOOK_URL nas configurações do repositório."
-            exit 1
+          # O agendamento automático só envia na data programada.
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            TODAY_BR=$(TZ=America/Sao_Paulo date +%F)
+            if [ "$TODAY_BR" != "2026-11-25" ]; then
+              echo "Hoje não é 25/11/2026. Nada será enviado."
+              exit 0
+            fi
           fi
 
           OWNER="${REPOSITORY%%/*}"
@@ -39,12 +49,19 @@ jobs:
           else
             SITE_URL="https://${OWNER}.github.io/${REPO}/"
           fi
-
           export SITE_URL
-          PAYLOAD=$(python3 -c 'import json,os; print(json.dumps({"content":"🎁 **Uma surpresa chegou!**\n\nHoje é um dia muito especial! Preparei algo com muito carinho para você. ❤️\n\n**Seu presente está aqui:**\n" + os.environ["SITE_URL"]}))')
-          SITE_URL="$SITE_URL" curl --fail --silent --show-error \
+
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] && [ "$TEST_MODE" = "true" ]; then
+            MESSAGE="🧪 **TESTE — webhook funcionando!**\n\nEsta é apenas uma mensagem de teste. O presente de aniversário será enviado no horário programado. ❤️\n\nLink do site: ${SITE_URL}"
+          else
+            MESSAGE="🎁 **Uma surpresa chegou!**\n\nHoje é um dia muito especial! Preparei algo com muito carinho para você. ❤️\n\n**Seu presente está aqui:**\n${SITE_URL}"
+          fi
+
+          export MESSAGE
+          PAYLOAD=$(python3 -c 'import json,os; print(json.dumps({"content": os.environ["MESSAGE"]}))')
+          curl --fail --silent --show-error \
             -H "Content-Type: application/json" \
             -d "$PAYLOAD" \
             "$DISCORD_WEBHOOK_URL"
 
-          echo "Webhook enviado."
+          echo "Mensagem enviada ao Discord."
