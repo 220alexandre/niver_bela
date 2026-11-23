@@ -37,7 +37,7 @@ const photos = [
   {src:"assets/foto-08.jpeg", text:"Que a gente ainda tenha milhares de momentos assim para viver juntos."},
   {src:"assets/foto-09.jpeg", text:"Não importa quantas vezes a gente discorde, eu sempre vou querer você ao meu lado."}
 ];
-];
+
 let index = 0;
 const image = document.getElementById("slide-image");
 const caption = document.getElementById("caption");
