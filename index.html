@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f5">
+  <meta name="description" content="Uma pequena homenagem para alguém muito especial.">
+  <title>Para você, meu amor ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="floating-hearts" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio">com carinho <span>♡</span></a>
+    <span class="date">25 de novembro</span>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <span class="eyebrow">um cantinho só nosso</span>
+        <h1>Feliz aniversário,<br><em>minha pessoa favorita.</em></h1>
+        <p>Hoje é o seu dia, mas quem ganhou um presente fui eu: ter você na minha vida.</p>
+        <a class="primary-btn" href="#nossas-fotos">Relembrar nossos momentos <span>↓</span></a>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="photo-tape"></div>
+        <img class="hero-photo" src="assets/foto-09.jpeg" alt="Nós dois juntinhos">
+        <span class="photo-note">meu lugar favorito é pertinho de você ♡</span>
+      </div>
+      <div class="hero-sticker">♡</div>
+    </section>
+
+
+    <section class="countdown-section" aria-label="Contagem regressiva para o aniversário">
+      <span class="eyebrow">a contagem para o seu dia começou</span>
+      <h2>Falta pouquinho para celebrar você!</h2>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div><strong id="days">00</strong><span>dias</span></div>
+        <div><strong id="hours">00</strong><span>horas</span></div>
+        <div><strong id="minutes">00</strong><span>minutos</span></div>
+        <div><strong id="seconds">00</strong><span>segundos</span></div>
+      </div>
+      <p class="countdown-message" id="countdown-message">Cada segundo mais perto de comemorar sua vida. ♡</p>
+    </section>
+
+    <section class="intro section-pad">
+      <span class="eyebrow">antes de tudo...</span>
+      <h2>Eu queria te lembrar<br>de uma coisa.</h2>
+      <p class="intro-text">Você é muito mais importante pra mim do que qualquer briguinha, qualquer dia difícil ou qualquer palavra dita no calor do momento. A gente pode discordar, se irritar por coisas bobas e até ficar emburrado às vezes… mas nada disso muda o tamanho do carinho e do amor que eu sinto por você.</p>
+      <div class="little-heart">♥</div>
+    </section>
+
+    <section class="gallery section-pad" id="nossas-fotos">
+      <div class="section-heading">
+        <div><span class="eyebrow">pequenos pedaços da nossa história</span><h2>Nós, do nosso jeitinho.</h2></div>
+        <div class="gallery-count"><span id="current">01</span> <i>/</i> 09</div>
+      </div>
+      <div class="carousel">
+        <button class="arrow prev" aria-label="Foto anterior">←</button>
+        <div class="slide-frame">
+          <div class="slide-image-wrap"><img id="slide-image" src="assets/foto-01.jpeg" alt="Uma lembrança nossa"></div>
+          <div class="slide-caption">
+            <span class="caption-kicker" id="caption-kicker">lembrança nº 01</span>
+            <p id="caption">Um daqueles momentos que eu guardaria de novo, mil vezes.</p>
+          </div>
+        </div>
+        <button class="arrow next" aria-label="Próxima foto">→</button>
+      </div>
+      <div class="carousel-bottom">
+        <div class="dots" id="dots" aria-label="Escolher foto"></div>
+        <span class="swipe-hint">Use as setinhas para passear pelas lembranças</span>
+      </div>
+    </section>
+
+    <section class="love-note section-pad">
+      <div class="note-card">
+        <span class="eyebrow">uma mensagem de coração</span>
+        <h2>Eu amo você.<br><em>Até nos dias bagunçados.</em></h2>
+        <p>Eu sei que nem sempre a gente vai concordar em tudo. Às vezes uma coisa pequena vira uma discussão enorme, a gente se estressa, fala demais ou não consegue se entender de primeira. Mas eu não quero que você nunca duvide disso: você continua sendo a minha melhor amiga, minha namorada e uma das pessoas mais especiais da minha vida.</p>
+        <p>Eu não espero que a gente seja perfeito. Quero que a gente continue aprendendo, conversando, rindo das nossas bobagens e escolhendo cuidar um do outro. Não é uma discussão boba que apaga tudo o que você significa pra mim.</p>
+        <p>Obrigado por existir, por ser você, por dividir tantos momentos comigo e por deixar meus dias mais bonitos. Eu torço pela sua felicidade, pelos seus sonhos e por tudo de lindo que ainda vem pela frente. Quero estar do seu lado para comemorar cada conquista.</p>
+        <div class="signature">Com todo o meu amor, <span>♡</span></div>
+      </div>
+    </section>
+
+    <section class="ending section-pad">
+      <div class="ending-flower">✿</div>
+      <span class="eyebrow">e que venham muitos outros capítulos</span>
+      <h2>Que seu novo ciclo seja<br><em>tão lindo quanto seu sorriso.</em></h2>
+      <p>Feliz vida, meu amor. Eu amo você, hoje e em todos os nossos amanhãs.</p>
+      <button class="surprise-btn" id="surprise">Um último carinho ♡</button>
+      <p class="surprise-message" id="surprise-message" aria-live="polite">Se eu pudesse escolher de novo, ainda escolheria ter você na minha vida. Sempre. ♥</p>
+    </section>
+  </main>
+
+  <footer>feito com amor, especialmente para você <span>♡</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
