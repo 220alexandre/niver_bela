@@ -3,6 +3,9 @@
 // A data é fixa para esta surpresa; não depende do fuso horário do visitante.
 const birthdayMoment = new Date("2026-11-25T00:00:00-03:00").getTime();
 const countdownMessage = document.getElementById("countdown-message");
+const music = document.getElementById("background-music");
+const musicButton = document.getElementById("music-toggle");
+
 
 function updateCountdown() {
   const remaining = birthdayMoment - Date.now();
@@ -90,3 +93,18 @@ function makeHeart() {
   document.querySelector(".floating-hearts").appendChild(heart);
   setTimeout(() => heart.remove(), 7200);
 }
+music.volume = 0.35;
+
+musicButton.addEventListener("click", async () => {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicButton.textContent = "♫ Pausar nossa música";
+    } catch (error) {
+      musicButton.textContent = "Tente tocar novamente ♡";
+    }
+  } else {
+    music.pause();
+    musicButton.textContent = "♫ Tocar nossa música";
+  }
+});
