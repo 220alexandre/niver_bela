@@ -93,7 +93,7 @@ function makeHeart() {
   document.querySelector(".floating-hearts").appendChild(heart);
   setTimeout(() => heart.remove(), 7200);
 }
-music.volume = 0.35;
+music.volume = 0.1;
 
 musicButton.addEventListener("click", async () => {
   if (music.paused) {
